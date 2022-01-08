@@ -1,0 +1,13 @@
+.home__wrapper {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  .overview {
+    .value {
+      font-size: 20px;
+    }
+  }
+  .table-view {
+    width: 100%;
+  }
+}

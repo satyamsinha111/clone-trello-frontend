@@ -8,10 +8,14 @@
   </nav>
   <main class="main-content">
     <div class="login-form col-5">
-      <span class="text-light">WELCOME TO LOGIN</span>
+      <span class="text-light">WELCOME TO SIGNUP</span>
       <hr />
 
       <div class="row">
+        <div class="col-12">
+          <label for="email" class="text-light">Your Username</label>
+          <input type="email" name="email" id="email" class="form-control" />
+        </div>
         <div class="col-12">
           <label for="email" class="text-light">Your Email</label>
           <input type="email" name="email" id="email" class="form-control" />
@@ -25,19 +29,31 @@
             class="form-control"
           />
         </div>
+
+        <div class="col-12 mt-4">
+          <label for="confirm-password" class="text-light"
+            >Please confirm Password</label
+          >
+          <input
+            type="password"
+            name="confirm-password"
+            id="confirm-password"
+            class="form-control"
+          />
+        </div>
         <div class="col-12 mt-4">
           <input
             type="button"
             class="btn btn-primary btn-block login-btn"
-            value="Login"
+            value="Signup"
           />
         </div>
         <div
           class="col-12 mt-4 d-flex justify-content-center align-items-center"
         >
           <span class="text-center">
-            <span class="text-light mr-2">Dont have any account?</span>
-            <a class="text-info" href="/signup">Register now</a>
+            <span class="text-light mr-2">Already have an account?</span>
+            <a class="text-info" href="/login">Sign in</a>
           </span>
         </div>
       </div>
