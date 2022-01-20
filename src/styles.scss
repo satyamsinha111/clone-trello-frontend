@@ -14,3 +14,9 @@ body {
 hr {
   background-color: #fff;
 }
+.mat-typography {
+  background-color: #212121;
+}
+button:disabled {
+  cursor: not-allowed;
+}

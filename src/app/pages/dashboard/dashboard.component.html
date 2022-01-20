@@ -13,28 +13,44 @@
     </div>
     <div class="menus mt-4">
       <button
-        class="btn btn-block btn-primary"
+        mat-raised-button
+        color="primary"
+        class="w-100 mb-1"
         (click)="jumpToPage('dashboard/home')"
       >
         HOME
       </button>
       <button
-        class="btn btn-block btn-secondary"
+        mat-raised-button
+        color="primary"
+        class="w-100 mb-1"
         (click)="jumpToPage('dashboard/tasks')"
       >
         TASKS
       </button>
       <button
-        class="btn btn-block btn-info"
+        mat-raised-button
+        color="primary"
+        class="w-100 mb-1"
         (click)="jumpToPage('dashboard/projects')"
       >
         PROJECTS
       </button>
       <button
-        class="btn btn-block btn-danger"
+        mat-raised-button
+        color="primary"
+        class="w-100 mb-1"
         (click)="jumpToPage('dashboard/accounts')"
       >
         ACCOUNTS
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        class="w-100 mb-1"
+        (click)="jumpToPage('dashboard/accounts')"
+      >
+        LOGOUT
       </button>
     </div>
   </mat-drawer>

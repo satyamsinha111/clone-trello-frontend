@@ -1,25 +1,12 @@
-.wrapper {
-  background-color: #fffcdc;
-  height: 100vh;
-  .navbar {
-    background-color: #191919 !important;
-  }
-  .main-content {
-    margin: auto;
-    width: 100%;
+@import url(../../../styles.scss);
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 100px;
-    .login-form {
-      background-color: #2c272e;
-      border-radius: 5px;
-      padding: 30px;
-      .login-btn {
-        background-color: #864879;
-        border: none;
-      }
-    }
-  }
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+}
+.body {
+  background-color: #212121 !important;
 }

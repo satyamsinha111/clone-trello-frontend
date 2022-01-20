@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "intersheet-a7c37": {
+      "hosting": {
+        "frontend": [
+          "intersheet-a7c37"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "intersheet-a7c37"
+  }
+}

@@ -1,16 +1,53 @@
-<div class="wrapper">
-  <nav class="navbar navbar-light bg-light p-4">
-    <div class="container">
-      <a class="navbar-brand text-light" style="letter-spacing: 2px"
-        >WORKOHOLIC</a
-      >
+<div class="content">
+  <div class="body">
+    <div class="center">
+      <mat-card>
+        <h2 class="h1">User login</h2>
+        <mat-divider></mat-divider>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin($event)">
+          <mat-form-field appearance="fill" class="w-100 mt-4">
+            <mat-label>Email</mat-label>
+            <input matInput autocomplete="off" formControlName="email" />
+            <mat-error>Email format is not correct</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="w-100 mt-2">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              type="password"
+              autocomplete="off"
+              formControlName="password"
+            />
+            <mat-error>Password must be atleast 6 charcters long</mat-error>
+          </mat-form-field>
+
+          <button
+            mat-raised-button
+            color="primary"
+            class="w-100 mt-2"
+            type="submit"
+            [disabled]="!loginForm.valid"
+          >
+            Login
+          </button>
+        </form>
+        <div
+          class="w-100 d-flex justify-content-center align-items-center p-2 mt-2"
+        >
+          Don`t have any account?
+        </div>
+        <a mat-raised-button color="warn" class="w-100 mt-2" href="/signup">
+          Signup
+        </a>
+      </mat-card>
     </div>
-  </nav>
+  </div>
+</div>
+<!-- <div class="wrapper">
   <main class="main-content">
     <div class="login-form col-5">
       <span class="text-light">WELCOME TO LOGIN</span>
       <hr />
-
       <div class="row">
         <div class="col-12">
           <label for="email" class="text-light">Your Email</label>
@@ -43,4 +80,4 @@
       </div>
     </div>
   </main>
-</div>
+</div> -->
