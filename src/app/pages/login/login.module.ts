@@ -1,6 +1,6 @@
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatDividerModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
   ],
 })
 export class LoginModule {}

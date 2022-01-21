@@ -9,14 +9,16 @@
       />
     </div>
     <div class="d-flex justify-content-center align-items-center">
-      <span class="text-center text-light mr-2">HELLO SATYAM</span>👋
+      <span class="text-center text-light mr-2"
+        >HELLO {{ displayName | uppercase }}</span
+      >👋
     </div>
     <div class="menus mt-4">
       <button
         mat-raised-button
         color="primary"
         class="w-100 mb-1"
-        (click)="jumpToPage('dashboard/home')"
+        (click)="jumpToPage('dashboard/home', 0)"
       >
         HOME
       </button>
@@ -24,7 +26,7 @@
         mat-raised-button
         color="primary"
         class="w-100 mb-1"
-        (click)="jumpToPage('dashboard/tasks')"
+        (click)="jumpToPage('dashboard/tasks', 1)"
       >
         TASKS
       </button>
@@ -32,7 +34,7 @@
         mat-raised-button
         color="primary"
         class="w-100 mb-1"
-        (click)="jumpToPage('dashboard/projects')"
+        (click)="jumpToPage('dashboard/projects', 2)"
       >
         PROJECTS
       </button>
@@ -40,7 +42,7 @@
         mat-raised-button
         color="primary"
         class="w-100 mb-1"
-        (click)="jumpToPage('dashboard/accounts')"
+        (click)="jumpToPage('dashboard/accounts', 3)"
       >
         ACCOUNTS
       </button>
@@ -48,7 +50,7 @@
         mat-raised-button
         color="warn"
         class="w-100 mb-1"
-        (click)="jumpToPage('dashboard/accounts')"
+        (click)="jumpToPage('dashboard/accounts', 4)"
       >
         LOGOUT
       </button>
