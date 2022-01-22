@@ -1,3 +1,4 @@
+import { AppConstants } from './../../utils/app.constants';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FirebaseAuthService } from 'src/app/services/firebase-auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -18,11 +19,13 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this._authService.userData.subscribe((data) => {
-      // console.log(data.multiFactor.user.displayName);
+      // console.log(data.multiFactor.user);
       if (data) {
         this.displayName = data.multiFactor.user.displayName;
+        localStorage.setItem(AppConstants.USER_ID, data.multiFactor.user.uid);
       }
       if (data === null) {
+        localStorage.clear();
         this.router.navigate(['login']);
       }
     });

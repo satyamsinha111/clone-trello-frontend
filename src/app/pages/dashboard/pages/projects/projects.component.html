@@ -5,7 +5,7 @@
         <h2 class="">Projects</h2>
       </div>
       <div class="col-2 p-4">
-        <button mat-raised-button>
+        <button mat-raised-button (click)="addProject()">
           <i class="fa fa-plus mr-2"></i>
           Add Project
         </button>
@@ -16,86 +16,47 @@
   <div class="content_section">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 mb-2">
-          <mat-card class="example-card">
-            <mat-card-title>Task 1</mat-card-title>
-            <mat-card-subtitle>Done</mat-card-subtitle>
+        <div class="col-md-4 mb-2" *ngFor="let project of projects">
+          <mat-card class="project-card">
+            <div class="d-flex justify-content-between">
+              <mat-card-title
+                >{{
+                  project.project_name.length > 20
+                    ? project.project_name.substring(0, 20) + ".."
+                    : project.project_name
+                }}
+                <mat-icon>{{
+                  project.is_active ? "check_circle" : "cancel"
+                }}</mat-icon>
+              </mat-card-title>
+              <button mat-button [matMenuTriggerFor]="menu">
+                <mat-icon
+                  aria-hidden="false"
+                  aria-label="Example home icon"
+                  style="cursor: pointer"
+                  >more_vert</mat-icon
+                >
+              </button>
+              <mat-menu #menu="matMenu">
+                <button
+                  mat-menu-item
+                  (click)="makeActive(project.is_active, project.project_id)"
+                >
+                  {{ project.is_active ? "Make inactive" : "Make active" }}
+                </button>
+                <button mat-menu-item (click)="editProject(project)">
+                  Edit
+                </button>
+
+                <button mat-menu-item (click)="delete(project.project_id)">
+                  Delete
+                </button>
+              </mat-menu>
+            </div>
+            <mat-card-subtitle>{{ project.project_status }}</mat-card-subtitle>
             <mat-card-content>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla a
-                consequuntur beatae nisi aperiam veniam optio numquam similique.
-                Tempore beatae nostrum mollitia aspernatur ullam itaque quia non
-                vel sequi exercitationem!
-              </p>
-            </mat-card-content>
-          </mat-card>
-        </div>
-        <div class="col-md-4 mb-2">
-          <mat-card class="example-card">
-            <mat-card-title>Task 2</mat-card-title>
-            <mat-card-subtitle>Pending</mat-card-subtitle>
-            <mat-card-content>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla a
-                consequuntur beatae nisi aperiam veniam optio numquam similique.
-                Tempore beatae nostrum mollitia aspernatur ullam itaque quia non
-                vel sequi exercitationem!
-              </p>
-            </mat-card-content>
-          </mat-card>
-        </div>
-        <div class="col-md-4 mb-2">
-          <mat-card class="example-card">
-            <mat-card-title>Task 3</mat-card-title>
-            <mat-card-subtitle>Cancelled</mat-card-subtitle>
-            <mat-card-content>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla a
-                consequuntur beatae nisi aperiam veniam optio numquam similique.
-                Tempore beatae nostrum mollitia aspernatur ullam itaque quia non
-                vel sequi exercitationem!
-              </p>
-            </mat-card-content>
-          </mat-card>
-        </div>
-        <div class="col-md-4 mb-2">
-          <mat-card class="example-card">
-            <mat-card-title>Task 4</mat-card-title>
-            <mat-card-subtitle>Ongoing</mat-card-subtitle>
-            <mat-card-content>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla a
-                consequuntur beatae nisi aperiam veniam optio numquam similique.
-                Tempore beatae nostrum mollitia aspernatur ullam itaque quia non
-                vel sequi exercitationem!
-              </p>
-            </mat-card-content>
-          </mat-card>
-        </div>
-        <div class="col-md-4 mb-2">
-          <mat-card class="example-card">
-            <mat-card-title>Task 5</mat-card-title>
-            <mat-card-subtitle>Done</mat-card-subtitle>
-            <mat-card-content>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla a
-                consequuntur beatae nisi aperiam veniam optio numquam similique.
-                Tempore beatae nostrum mollitia aspernatur ullam itaque quia non
-                vel sequi exercitationem!
-              </p>
-            </mat-card-content>
-          </mat-card>
-        </div>
-        <div class="col-md-4 mb-2">
-          <mat-card class="example-card">
-            <mat-card-title>Task 6</mat-card-title>
-            <mat-card-subtitle>Done</mat-card-subtitle>
-            <mat-card-content>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla a
-                consequuntur beatae nisi aperiam veniam optio numquam similique.
-                Tempore beatae nostrum mollitia aspernatur ullam itaque quia non
-                vel sequi exercitationem!
+              <p class="mb-3">
+                {{ project.description }}
               </p>
             </mat-card-content>
           </mat-card>

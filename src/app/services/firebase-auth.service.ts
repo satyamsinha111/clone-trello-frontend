@@ -51,7 +51,6 @@ export class FirebaseAuthService {
                 })
                 .catch((error) => {
                   console.log(error);
-
                   reject(error);
                 });
             })

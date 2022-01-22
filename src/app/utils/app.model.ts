@@ -1,5 +1,10 @@
-class Task {}
+export class Task {}
 
-class Project {}
+export class Project {
+  name: string;
+  status: string;
+  description: string;
+  isactive: boolean;
+}
 
-class User {}
+export class User {}

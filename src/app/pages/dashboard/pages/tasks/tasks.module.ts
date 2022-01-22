@@ -7,9 +7,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 @NgModule({
-  declarations: [TasksComponent],
+  declarations: [TasksComponent, AddTaskComponent],
   imports: [
     CommonModule,
     TasksRoutingModule,

@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Edit Project</h2>
+<mat-dialog-content>
+  <form [formGroup]="projectForm">
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Project Name</mat-label>
+      <input matInput required autocomplete="off" formControlName="name" />
+      <mat-error>Field is required</mat-error></mat-form-field
+    >
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Project status</mat-label>
+      <mat-select formControlName="projectStatus">
+        <mat-option *ngFor="let status of projectStatus" [value]="status">
+          {{ status }}
+        </mat-option>
+      </mat-select>
+      <mat-error>Field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Project Description</mat-label>
+      <textarea
+        matInput
+        required
+        autocomplete="off"
+        formControlName="description"
+      ></textarea>
+      <mat-error>Field is required</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button type="submit" (click)="onSubmit()" class="d-flex">
+    Save
+  </button>
+</mat-dialog-actions>
