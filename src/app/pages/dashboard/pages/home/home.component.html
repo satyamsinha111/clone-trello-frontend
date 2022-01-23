@@ -5,28 +5,28 @@
         <mat-card
           >Total Projects
           <hr class="mt-2" />
-          <div class="value">20</div>
+          <div class="value">{{ totalProjects }}</div>
         </mat-card>
       </div>
       <div class="col-md-3">
         <mat-card
           >Total Tasks
           <hr class="mt-2" />
-          <div class="value">20</div>
+          <div class="value">{{ totalTasks }}</div>
         </mat-card>
       </div>
       <div class="col-md-3">
         <mat-card
           >Pending Tasks
           <hr class="mt-2" />
-          <div class="value">20</div></mat-card
+          <div class="value">{{ totalPendingTasks }}</div></mat-card
         >
       </div>
       <div class="col-md-3">
         <mat-card
           >Completed Tasks
           <hr class="mt-2" />
-          <div class="value">20</div></mat-card
+          <div class="value">{{ totalCompletedTasks }}</div></mat-card
         >
       </div>
     </div>
@@ -36,30 +36,41 @@
         The actual rendered columns are set as a property on the row definition" -->
 
     <!-- Position Column -->
-    <ng-container matColumnDef="position">
+    <!-- <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef>No.</th>
       <td mat-cell *matCellDef="let element">{{ element.position }}</td>
-    </ng-container>
+    </ng-container> -->
 
     <!-- Name Column -->
-    <ng-container matColumnDef="name">
+    <ng-container matColumnDef="task_name">
       <th mat-header-cell *matHeaderCellDef>Task</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.task_name }}</td>
     </ng-container>
 
     <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
+    <ng-container matColumnDef="task_description">
       <th mat-header-cell *matHeaderCellDef>Task Description</th>
-      <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{
+          element.task_description.length > 20
+            ? element.task_description.slice(0, 18) + "...."
+            : element.task_description
+        }}
+      </td>
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
+    <ng-container matColumnDef="task_status">
       <th mat-header-cell *matHeaderCellDef>Task Status</th>
-      <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.task_status }}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+  <div align="end" class="my-4">
+    <a mat-raised-button color="primary" href="/dashboard/tasks"
+      >View All Tasks</a
+    >
+  </div>
 </div>

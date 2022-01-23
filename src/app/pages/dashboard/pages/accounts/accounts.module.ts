@@ -1,17 +1,17 @@
+import { MatButtonModule } from '@angular/material/button';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AccountsRoutingModule } from './accounts-routing.module';
 import { AccountsComponent } from './accounts.component';
-
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
-  declarations: [
-    AccountsComponent
-  ],
+  declarations: [AccountsComponent],
   imports: [
     CommonModule,
-    AccountsRoutingModule
-  ]
+    AccountsRoutingModule,
+    MatCardModule,
+    MatButtonModule,
+  ],
 })
-export class AccountsModule { }
+export class AccountsModule {}

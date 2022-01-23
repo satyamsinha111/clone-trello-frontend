@@ -5,9 +5,16 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [HomeComponent],
-  imports: [CommonModule, HomeRoutingModule, MatCardModule, MatTableModule],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    MatCardModule,
+    MatTableModule,
+    MatButtonModule,
+  ],
 })
 export class HomeModule {}
