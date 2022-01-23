@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>Edit</h2>
+<mat-dialog-content>
+  <form [formGroup]="profileForm">
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Address</mat-label>
+      <input matInput required autocomplete="off" formControlName="address" />
+      <mat-error>Field is required</mat-error></mat-form-field
+    >
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Profession</mat-label>
+      <input
+        matInput
+        required
+        autocomplete="off"
+        formControlName="profession"
+      />
+      <mat-error>Field is required</mat-error></mat-form-field
+    >
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Company name</mat-label>
+      <input
+        matInput
+        required
+        autocomplete="off"
+        formControlName="companyName"
+      />
+      <mat-error>Field is required</mat-error></mat-form-field
+    >
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    type="submit"
+    class="d-flex"
+    (click)="onSave()"
+    [disabled]="!profileForm.valid"
+  >
+    Save
+  </button>
+</mat-dialog-actions>

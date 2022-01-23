@@ -1,11 +1,15 @@
 <div class="profile_wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-10 p-4">
+      <div class="col-7 p-4">
         <h2 class="">ACCOUNTS</h2>
       </div>
-      <div class="col-2 p-4">
-        <button mat-raised-button>
+      <div class="col-5 p-4 d-flex justify-content-end" align="end">
+        <button mat-raised-button class="mr-2" (click)="onResumeUpload()">
+          <i class="fa fa-edit me-2"></i>
+          Upload Resume
+        </button>
+        <button mat-raised-button (click)="onEdit()">
           <i class="fa fa-edit mr-2"></i>
           Edit Profile
         </button>
@@ -18,24 +22,26 @@
         <mat-card>
           <div class="username__section mb-3">
             <span>USERNAME:</span>
-            <span class="m-2">Satyam sinha</span>
+            <span class="m-2"> {{ userData[4] | titlecase }} </span>
           </div>
           <div class="username__section mb-3">
             <span>ADDRESS:</span>
-            <span class="m-2">Asansol</span>
+            <span class="m-2">{{ userData[0] | titlecase }}</span>
           </div>
           <div class="username__section mb-3">
             <span>PROFESSION:</span>
-            <span class="m-2">Software engineer</span>
+            <span class="m-2">{{ userData[2] | titlecase }}</span>
           </div>
           <div class="username__section mb-3">
             <span>COMPANY NAME:</span>
-            <span class="m-2">Colorbracket Technologies LLP</span>
+            <span class="m-2">{{ userData[1] | titlecase }}</span>
           </div>
           <div class="username__section mb-3">
             <span>RESUME:</span>
-            <span class="m-2"
-              ><a href="http://www.google.com">updated_resume.pdf</a></span
+            <span class="ml-4"
+              ><a mat-raised-button [href]="userData[3]" target="__blank"
+                >View Resume</a
+              ></span
             >
           </div>
         </mat-card>

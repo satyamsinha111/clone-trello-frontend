@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "node_modules/.bin/tslint -p tslint.json && tsc",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -24,6 +24,7 @@
     "@angular/router": "~12.1.0-",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "@ngrx/store": "^13.0.2",
+    "angular-material-fileupload": "^3.0.2",
     "bootstrap": "^4.5.0",
     "firebase": "^9.6.4",
     "font-awesome": "^4.7.0",
@@ -46,6 +47,6 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.3.2"
+    "typescript": "^4.5.5"
   }
 }

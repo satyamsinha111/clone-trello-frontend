@@ -31,6 +31,47 @@ export class FirebaseAuthService {
     });
   }
 
+  updateResume(userid: string, resumelink: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.db
+        .object(`/user/${userid}`)
+        .update({
+          resumelink: resumelink,
+        })
+        .then((response) => {
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  }
+
+  getUserById(userid): Observable<any> {
+    return new Observable((observer) => {
+      this.db
+        .list(`/user/${userid}`)
+        .valueChanges()
+        .subscribe((data) => {
+          observer.next(data);
+        });
+    });
+  }
+
+  updateUser(userid: string, userData: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.db
+        .object(`/user/${userid}`)
+        .update(userData)
+        .then((response) => {
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  }
+
   userSignup(email: string, password: string, username: string): Promise<any> {
     return new Promise((resolve, reject) => {
       this._angularAuth
