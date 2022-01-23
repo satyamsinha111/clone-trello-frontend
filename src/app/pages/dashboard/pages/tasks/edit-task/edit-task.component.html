@@ -29,7 +29,13 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button type="submit" (click)="onSubmit()" class="d-flex">
+  <button
+    mat-button
+    type="submit"
+    (click)="onSubmit()"
+    [disabled]="!taskForm.valid"
+    class="d-flex"
+  >
     Save
   </button>
 </mat-dialog-actions>
