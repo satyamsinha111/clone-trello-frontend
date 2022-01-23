@@ -53,6 +53,21 @@ export class FirebaseProjectService {
     });
   }
 
+  getCurrentActiveProject(userid: string): Observable<any> {
+    return new Observable((observer) => {
+      this.db
+        .list('/projects')
+        .valueChanges()
+        .subscribe((data) => {
+          let activeProject = data.filter(
+            (project: any) =>
+              project.is_active === true && project.user_id === userid
+          );
+          observer.next(activeProject);
+        });
+    });
+  }
+
   updateProject(projectid: string, projectData: Project) {
     console.log(projectData, projectid);
 
@@ -79,15 +94,13 @@ export class FirebaseProjectService {
   }
 
   getAllProjects(userid: string): Observable<any> {
-    console.log(userid);
     return new Observable((observer) => {
       this.db
         .list('/projects')
         .valueChanges()
         .subscribe((data) => {
           let curentUserProjects = data.filter(
-            (v: any, i) =>
-              v.user_id === localStorage.getItem(AppConstants.USER_ID)
+            (v: any, i) => v.user_id === userid
           );
           observer.next(curentUserProjects);
         });

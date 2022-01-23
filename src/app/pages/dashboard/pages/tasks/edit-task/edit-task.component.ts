@@ -1,7 +1,5 @@
-import { AppConstants } from './../../../../../utils/app.constants';
-import { FirebaseTaskService } from './../../../../../services/firebase-task.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   MatDialog,
   MatDialogRef,
@@ -9,13 +7,15 @@ import {
 } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Task } from 'src/app/shared/models/task.model';
+import { AppConstants } from './../../../../../utils/app.constants';
+import { FirebaseTaskService } from './../../../../../services/firebase-task.service';
 
 @Component({
-  selector: 'app-add-task',
-  templateUrl: './add-task.component.html',
-  styleUrls: ['./add-task.component.scss'],
+  selector: 'app-edit-task',
+  templateUrl: './edit-task.component.html',
+  styleUrls: ['./edit-task.component.scss'],
 })
-export class AddTaskComponent implements OnInit {
+export class EditTaskComponent implements OnInit {
   public taskStatus: string[] = [
     'Started',
     'Ongoing',
@@ -36,7 +36,7 @@ export class AddTaskComponent implements OnInit {
 
   constructor(
     private _dialog: MatDialog,
-    private _dialogRef: MatDialogRef<AddTaskComponent>,
+    private _dialogRef: MatDialogRef<EditTaskComponent>,
     private _snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public inputData: any,
     private _taskService: FirebaseTaskService
@@ -44,11 +44,15 @@ export class AddTaskComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.inputData);
-
     this.taskForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       status: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
+    });
+    this.taskForm.patchValue({
+      name: this.inputData.task_name,
+      status: this.inputData.task_status,
+      description: this.inputData.task_description,
     });
   }
 
@@ -58,18 +62,12 @@ export class AddTaskComponent implements OnInit {
     this.taskData.status = this.taskForm.value.status;
     this.taskData.description = this.taskForm.value.description;
     this._taskService
-      .createTask(
-        localStorage.getItem(AppConstants.USER_ID),
-        this.inputData,
-        this.taskData
-      )
-      .then((response) => {
-        this._snackBar.open('Task added successfully', 'OK');
+      .updateTask(this.inputData.task_id, this.taskData)
+      .then(() => {
         this._dialogRef.close(true);
       })
       .catch((error) => {
-        this._snackBar.open('Task adding failed', 'OK');
-        this._dialogRef.close(true);
+        console.log(error);
       });
   }
 }

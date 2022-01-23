@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseProjectService } from 'src/app/services/firebase-project.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppConstants } from 'src/app/utils/app.constants';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-projects',
@@ -13,6 +14,7 @@ import { AppConstants } from 'src/app/utils/app.constants';
 })
 export class ProjectsComponent implements OnInit {
   public projects: any[] = [];
+  private projectListSubscriber: Subscription;
   constructor(
     private _firebaseProjectService: FirebaseProjectService,
     private _dialog: MatDialog,
@@ -20,7 +22,7 @@ export class ProjectsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._firebaseProjectService
+    this.projectListSubscriber = this._firebaseProjectService
       .getAllProjects(localStorage.getItem(AppConstants.USER_ID))
       .subscribe((projects) => {
         console.log(projects);
@@ -56,5 +58,11 @@ export class ProjectsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {
       this.ngOnInit();
     });
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.projectListSubscriber.unsubscribe();
   }
 }
